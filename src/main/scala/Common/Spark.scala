@@ -1,6 +1,6 @@
 package Common
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.slf4j.LoggerFactory
 
 object Spark {
@@ -29,4 +29,7 @@ object Spark {
     logger.info("Hadoop properties set")
   }
 
+  def readParquet(sparkSession: SparkSession, PATH: String): DataFrame = {
+    sparkSession.read.parquet(PATH)
+  }
 }

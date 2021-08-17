@@ -13,21 +13,30 @@ object Main {
     logger.warn("Caso 2 application starts - Jovenes Prosefionales")
 
     /* val PATH: String = args(0)*/
-    val PATH: String = "D:\\Indra\\Chamba\\BCP\\Capacitación y seguimiento\\Ejercicios\\m_desmoneda\\000000_0.snappy.parquet"
+    val PATH: String = path.route
 
-    val STATS_LEVEL: Int = 4
+    val STATS_LEVEL: Int = statsLevel.number
 
-    val PARTITION_ID: String = "fecactualizacionregistro"
+    val PARTITION_ID: String = partitionId.column
 
     val sparkSession: SparkSession = Spark.createSession()
 
-    val df = sparkSession.read.parquet(PATH)
+    val df = Spark.readParquet(sparkSession, PATH)
 
     dfStats(df, STATS_LEVEL, PARTITION_ID)
 
     logger.warn("Caso 2 application ends. GOOD BYE")
 
   }
+
+  case class Path(route: String)
+  val path = Path("D:\\Indra\\Chamba\\BCP\\Capacitación y seguimiento\\Ejercicios\\m_desmoneda\\000000_0.snappy.parquet")
+
+  case class PartitionId(column: String)
+  val partitionId = PartitionId("fecactualizacionregistro")
+
+  case class StatsLevel(number: Int)
+  val statsLevel = StatsLevel(4)
 
   def dfStats(df: DataFrame, STATS_LEVEL: Int, PARTITION_ID: String):Unit = {
 
@@ -44,6 +53,7 @@ object Main {
       case 8 => Printer.eight(df)
     }
   }
+
 
   def getNumPartition(df: DataFrame): Int = {
     df.rdd.getNumPartitions
