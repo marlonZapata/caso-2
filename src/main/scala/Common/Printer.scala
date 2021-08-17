@@ -18,14 +18,14 @@ object Printer {
   }
 
   def three(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int): Unit = {
-    println(s"*** STATS *** Df Partitioon Info")
     printStats(df, PARTITION_ID, PARTITION_NUM)
   }
 
-  def four(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int) = {
+  def four(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int): Unit = {
     two(df)
     three(df, PARTITION_ID, PARTITION_NUM)
   }
+
   def eight(df: DataFrame): Unit = {
     println(s"*** STATS *** Show data:")
     df.show()
@@ -39,6 +39,7 @@ object Printer {
   def printStats(df: DataFrame): Unit  = {
     println(s"*** STATS *** Df Partition record count ${df.count()}")
   }
+
 
   def printStats(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int): Unit = {
     println(s"*** STATS *** Df Partitioon Info")

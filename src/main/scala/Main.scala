@@ -38,6 +38,10 @@ object Main {
   case class StatsLevel(number: Int)
   val statsLevel = StatsLevel(4)
 
+  /*
+  * Printer.three and Printer.four check the partitions data
+  */
+
   def dfStats(df: DataFrame, STATS_LEVEL: Int, PARTITION_ID: String):Unit = {
 
     val PARTITION_NUM: Int = getNumPartition(df)
@@ -52,6 +56,7 @@ object Main {
       case 4 => Printer.four(df, PARTITION_ID, PARTITION_NUM)
       case 8 => Printer.eight(df)
     }
+
   }
 
 
