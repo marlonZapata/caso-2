@@ -38,17 +38,10 @@ object Main {
       Printer.greaterThanZero(df, PARTITION_NUM)
     }
 
-    if (isTwoOrFour(STATS_LEVEL)) {
-      Printer.twoOrFour(df)
-    }
-
-    // check the partitions data
-    if (isThreeOrFour(STATS_LEVEL)) {
-      Printer.threeOrFour(df, PARTITION_ID, PARTITION_NUM)
-    }
-
-    if (isEight(STATS_LEVEL)) {
-      Printer.eight(df)
+    STATS_LEVEL match {
+      case 2 | 4 => Printer.twoOrFour(df)
+      case 3 | 4 => Printer.threeOrFour(df, PARTITION_ID, PARTITION_NUM)
+      case 8 => Printer.eight(df)
     }
   }
 
