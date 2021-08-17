@@ -8,12 +8,11 @@ object Main {
   private val logger = LoggerFactory.getLogger(getClass.getName)
 
   def main(args: Array[String]): Unit = {
-    /*
-    val PATH: String = args(0)
-    */
+
     logger.info("Main method started...")
     logger.warn("Caso 2 application starts - Jovenes Prosefionales")
 
+    /* val PATH: String = args(0)*/
     val PATH: String = "D:\\Indra\\Chamba\\BCP\\Capacitación y seguimiento\\Ejercicios\\m_desmoneda\\000000_0.snappy.parquet"
 
     val STATS_LEVEL: Int = 4
@@ -39,8 +38,9 @@ object Main {
     }
 
     STATS_LEVEL match {
-      case 2 | 4 => Printer.twoOrFour(df)
-      case 3 | 4 => Printer.threeOrFour(df, PARTITION_ID, PARTITION_NUM)
+      case 2 => Printer.two(df)
+      case 3 => Printer.three(df, PARTITION_ID, PARTITION_NUM)
+      case 4 => Printer.four(df, PARTITION_ID, PARTITION_NUM)
       case 8 => Printer.eight(df)
     }
   }
@@ -53,15 +53,4 @@ object Main {
     STATS_LEVEL > 0
   }
 
-  def isTwoOrFour(STATS_LEVEL: Int): Boolean = {
-    STATS_LEVEL == 2 || STATS_LEVEL== 4
-  }
-
-  def isThreeOrFour(STATS_LEVEL: Int): Boolean = {
-    STATS_LEVEL == 3 || STATS_LEVEL ==4
-  }
-
-  def isEight(STATS_LEVEL: Int) = {
-    STATS_LEVEL == 8
-  }
 }

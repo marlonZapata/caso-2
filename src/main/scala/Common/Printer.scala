@@ -13,15 +13,19 @@ object Printer {
     printStats(sizeMb, sizeEstimator, PARTITION_NUM)
   }
 
-  def twoOrFour(df: DataFrame): Unit = {
+  def two(df: DataFrame): Unit = {
     printStats(df)
   }
 
-  def threeOrFour(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int): Unit = {
+  def three(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int): Unit = {
     println(s"*** STATS *** Df Partitioon Info")
     printStats(df, PARTITION_ID, PARTITION_NUM)
   }
 
+  def four(df: DataFrame, PARTITION_ID: String, PARTITION_NUM: Int) = {
+    two(df)
+    three(df, PARTITION_ID, PARTITION_NUM)
+  }
   def eight(df: DataFrame): Unit = {
     println(s"*** STATS *** Show data:")
     df.show()
