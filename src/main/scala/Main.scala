@@ -30,13 +30,13 @@ object Main {
   }
 
   case class Path(route: String)
-  val path = Path("D:\\Indra\\Chamba\\BCP\\Capacitación y seguimiento\\Ejercicios\\m_desmoneda\\000000_0.snappy.parquet")
+  val path: Path = Path("D:\\Indra\\Chamba\\BCP\\Capacitación y seguimiento\\Ejercicios\\m_desmoneda\\000000_0.snappy.parquet")
 
   case class PartitionId(column: String)
-  val partitionId = PartitionId("fecactualizacionregistro")
+  val partitionId: PartitionId = PartitionId("fecactualizacionregistro")
 
   case class StatsLevel(number: Int)
-  val statsLevel = StatsLevel(4)
+  val statsLevel: StatsLevel = StatsLevel(4)
 
   /*
   * Printer.three and Printer.four check the partitions data
